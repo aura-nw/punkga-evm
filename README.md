@@ -61,6 +61,27 @@ $ forge script script/PunkgaReward_deployProxy.s.sol --rpc-url aura --private-ke
 $ forge verify-contract --verifier sourcify --verifier-url https://indexer-v2.dev.aurascan.io/sourcify/ --rpc-url https://jsonrpc.serenity.aura.network/  <contract_address>  src/PunkgaReward.sol:PunkgaReward
 ```
 
+### Deploy Odyssey
+1. Deploy implementation
+```shell
+$ forge script script/PunkgaReward_deployImpl.s.sol --rpc-url https://odyssey-evm.spidernode.net --private-key xxxx --broadcast
+```
+
+2. Deploy proxy
+```shell
+$ forge script script/PunkgaReward_deployProxy.s.sol --rpc-url https://odyssey-evm.spidernode.net --private-key xxxx --broadcast
+```
+
+### Verify
+```shell
+$ forge verify-contract \
+  --rpc-url https://odyssey.storyrpc.io/ \
+  --verifier blockscout \
+  --verifier-url 'https://odyssey-testnet-explorer.storyscan.xyz/api/' \
+  <contract_address> \
+  src/PunkgaReward.sol:PunkgaReward
+```
+
 ### Cast
 
 ```shell
